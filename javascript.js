@@ -5,6 +5,11 @@ const decimal = document.querySelector('.decimal');
 const numbers = document.querySelectorAll('[data-number]');
 const operators = document.querySelectorAll('[data-operator]');
 
+numbers.forEach((button) =>
+  button.addEventListener('click', () => appendNumber(button.textContent))
+)
+
+
 function add(a, b) {
     console.log(a + b);
 };
