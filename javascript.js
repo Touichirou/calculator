@@ -1,3 +1,10 @@
+const clear = document.querySelector('.clear');
+const del = document.querySelector('.delete');
+const equals = document.querySelector('.equals');
+const decimal = document.querySelector('.decimal');
+const numbers = document.querySelectorAll('[data-number]');
+const operators = document.querySelectorAll('[data-operator]');
+
 function add(a, b) {
     console.log(a + b);
 };
