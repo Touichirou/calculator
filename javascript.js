@@ -4,11 +4,11 @@ const equals = document.querySelector('.equals');
 const decimal = document.querySelector('.decimal');
 const numbers = document.querySelectorAll('[data-number]');
 const operators = document.querySelectorAll('[data-operator]');
+const display = document.querySelector('.display');
 
 numbers.forEach((button) =>
-  button.addEventListener('click', () => appendNumber(button.textContent))
-)
-
+  button.addEventListener('click', () => display.textContent += button.textContent)
+);
 
 function add(a, b) {
     console.log(a + b);
