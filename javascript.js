@@ -1,53 +1,105 @@
 const clear = document.querySelector('.clear');
-const del = document.querySelector('.delete');
+const del = document.querySelector('.del');
 const equals = document.querySelector('.equals');
 const decimal = document.querySelector('.decimal');
 const numbers = document.querySelectorAll('[data-number]');
 const operators = document.querySelectorAll('[data-operator]');
 const display = document.querySelector('.display');
 
+display.textContent = "";
+let storedValue = "";
+let operator = "";
+let displayValue = "";
+let result = "";
+
+clear.addEventListener('click', function() {
+    display.textContent = "";
+    storedValue = "";
+    displayValue = "";
+});
+
 numbers.forEach((button) =>
-  button.addEventListener('click', () => display.textContent += button.textContent)
+  button.addEventListener('click', function() {
+    displayValue += button.textContent;
+    display.textContent = displayValue;
+  }))
+
+operators.forEach((button) =>
+    button.addEventListener('click', function() {
+        if (storedValue && displayValue) {
+            displayResult()
+            operator = button.textContent;
+        } else if (storedValue && !displayValue) {
+            operator = button.textContent;
+            display.textContent = "";
+        }
+          else {storedValue = displayValue;
+            operator = button.textContent;
+            displayValue = "";
+            display.textContent = "";
+        }
+    })
 );
 
+equals.addEventListener('click', function() {
+    if (storedValue && displayValue) {
+        displayResult()
+    }
+  });
+
+del.addEventListener('click', function() {
+    displayValue = displayValue.slice(0, -1);
+    display.textContent = displayValue;
+});
+
+function displayResult() {
+    result = (operate(parseFloat(storedValue), parseFloat(displayValue), operator)).toFixed(5) / 1;
+    display.textContent += result;
+    storedValue = result;
+    displayValue = "";
+}
+
 function add(a, b) {
-    console.log(a + b);
+    display.textContent = "";
+    return a + b;
 };
 
 function subtract(a, b) {
-    console.log(a - b);
+    display.textContent = "";
+    return a - b;
 };
 
 function multiply(a, b) {
-    console.log(a * b);
+    display.textContent = "";
+    if (a === 0 || b === 0) {
+        return "Not possible.";
+    } else {
+    return a * b;
+    }
 };
 
 function divide(a, b) {
-    console.log(a / b);
+    display.textContent = "";
+    if (a === 0 || b === 0) {
+        return "Not possible."
+    } else {
+    return a / b;
+    }
 };
 
 function operate(a, b, operator) {
     switch(operator) {
         case "+":
-            add(a, b);
-            break;
+            return add(a, b);
         case "-":
-            subtract(a, b);
-            break;
+            return subtract(a, b);
         case "*":
-            multiply(a, b);
-            break;
+            return multiply(a, b);
         case "/":
-            divide(a, b);
-            break;
+            return divide(a, b);
         default:
             alert("Error.");
     };
 };
-
-operate(3, 7, "-");
-operate(3, 7, "+");
-operate(3, 7, "*");
-operate(3, 7, "/");
 
 
