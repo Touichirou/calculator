@@ -52,6 +52,13 @@ del.addEventListener('click', function() {
     display.textContent = displayValue;
 });
 
+decimal.addEventListener('click', function() {
+    if (!displayValue.includes('.') && displayValue != "") {   
+    displayValue += this.textContent;
+    display.textContent = displayValue;
+    }
+});
+
 function displayResult() {
     result = (operate(parseFloat(storedValue), parseFloat(displayValue), operator)).toFixed(5) / 1;
     display.textContent += result;
