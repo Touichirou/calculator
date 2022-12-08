@@ -20,9 +20,10 @@ clear.addEventListener('click', function() {
 
 numbers.forEach((button) =>
   button.addEventListener('click', function() {
+    if (display.textContent.length < 22) {
     displayValue += button.textContent;
     display.textContent = displayValue;
-  }))
+  }}))
 
 operators.forEach((button) =>
     button.addEventListener('click', function() {
@@ -31,13 +32,12 @@ operators.forEach((button) =>
             operator = button.textContent;
         } else if (storedValue && !displayValue) {
             operator = button.textContent;
-            display.textContent = "";
         }
           else {storedValue = displayValue;
             operator = button.textContent;
-            displayValue = "";
-            display.textContent = "";
+            displayValue = "";  
         }
+    display.textContent = "";
     })
 );
 
@@ -48,8 +48,10 @@ equals.addEventListener('click', function() {
   });
 
 del.addEventListener('click', function() {
+    if (displayValue !== "") {
     displayValue = displayValue.slice(0, -1);
     display.textContent = displayValue;
+}
 });
 
 decimal.addEventListener('click', function() {
@@ -78,21 +80,13 @@ function subtract(a, b) {
 
 function multiply(a, b) {
     display.textContent = "";
-    if (a === 0 || b === 0) {
-        return "Not possible.";
-    } else {
     return a * b;
-    }
 };
 
 function divide(a, b) {
     display.textContent = "";
-    if (a === 0 || b === 0) {
-        return "Not possible."
-    } else {
     return a / b;
-    }
-};
+    };
 
 function operate(a, b, operator) {
     switch(operator) {

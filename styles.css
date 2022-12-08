@@ -34,7 +34,7 @@ width: 400px;
 }
 
 .display {
-  font-size: 36px;
+  font-size: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
