@@ -5,6 +5,7 @@ const decimal = document.querySelector('.decimal');
 const numbers = document.querySelectorAll('[data-number]');
 const operators = document.querySelectorAll('[data-operator]');
 const display = document.querySelector('.display');
+const keys = document.querySelectorAll('[data-key]');
 
 display.textContent = "";
 let storedValue = "";
@@ -18,6 +19,127 @@ clear.addEventListener('click', function() {
     displayValue = "";
 });
 
+document.addEventListener('keydown', function(e) {
+    let keyPressed = e.key;
+    if (keyPressed === 'Backspace') {
+        if (displayValue !== "") {
+                displayValue = displayValue.slice(0, -1);
+                display.textContent = displayValue;
+            }
+    } else if (keyPressed === 'Delete') {
+        display.textContent = "";
+        storedValue = "";
+        displayValue = "";
+    }   
+      else if (display.textContent.length < 22) {
+    switch(keyPressed) {
+        case '0':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '1':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '2':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '3':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '4':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '5':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '6':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '7':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '8':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '9':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '+':
+        display.textContent = "";    
+            if (storedValue && displayValue) {
+                displayResult()
+                operator = keyPressed;
+            } else if (storedValue && !displayValue) {
+                operator = keyPressed;
+            }
+              else {storedValue = displayValue;
+                operator = keyPressed;
+                displayValue = "";  
+            }
+        break;
+        case '-':
+        display.textContent = "";    
+            if (storedValue && displayValue) {
+                displayResult()
+                operator = keyPressed;
+            } else if (storedValue && !displayValue) {
+                operator = keyPressed;
+            }
+              else {storedValue = displayValue;
+                operator = keyPressed;
+                displayValue = "";  
+            }
+        break;
+        case '/':
+        display.textContent = "";    
+            if (storedValue && displayValue) {
+                displayResult()
+                operator = keyPressed;
+            } else if (storedValue && !displayValue) {
+                operator = keyPressed;
+            }
+              else {storedValue = displayValue;
+                operator = keyPressed;
+                displayValue = "";  
+            }
+        break;
+        case '*':
+        display.textContent = "";    
+            if (storedValue && displayValue) {
+                displayResult()
+                operator = keyPressed;
+            } else if (storedValue && !displayValue) {
+                operator = keyPressed;
+            }
+              else {storedValue = displayValue;
+                operator = keyPressed;
+                displayValue = "";  
+            }
+        break;
+        case '=':
+            if (storedValue && displayValue) {
+                displayResult()
+            }
+        break;
+        case '.':
+            if (!displayValue.includes('.') && displayValue != "") {   
+                displayValue += keyPressed;
+                display.textContent = displayValue;
+                }
+        break;
+    }
+    
+}});
+
 numbers.forEach((button) =>
   button.addEventListener('click', function() {
     if (display.textContent.length < 22) {
@@ -27,6 +149,7 @@ numbers.forEach((button) =>
 
 operators.forEach((button) =>
     button.addEventListener('click', function() {
+    display.textContent = "";    
         if (storedValue && displayValue) {
             displayResult()
             operator = button.textContent;
@@ -37,7 +160,7 @@ operators.forEach((button) =>
             operator = button.textContent;
             displayValue = "";  
         }
-    display.textContent = "";
+    
     })
 );
 
@@ -63,28 +186,28 @@ decimal.addEventListener('click', function() {
 
 function displayResult() {
     result = (operate(parseFloat(storedValue), parseFloat(displayValue), operator)).toFixed(5) / 1;
-    display.textContent += result;
+    display.textContent = result;
     storedValue = result;
     displayValue = "";
 }
 
 function add(a, b) {
-    display.textContent = "";
+    
     return a + b;
 };
 
 function subtract(a, b) {
-    display.textContent = "";
+    
     return a - b;
 };
 
 function multiply(a, b) {
-    display.textContent = "";
+    
     return a * b;
 };
 
 function divide(a, b) {
-    display.textContent = "";
+    
     return a / b;
     };
 
