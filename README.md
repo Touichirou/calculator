@@ -1,1 +1,1 @@
-# calculator
+My first attempt at making a calculator with keyboard functionality. The calculator seems to work properly, but the code is convoluted, messy, and violates DNR - especially the keyboard functionality code. The code will be refactored at some point in the future.
