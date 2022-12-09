@@ -31,48 +31,8 @@ document.addEventListener('keydown', function(e) {
         storedValue = "";
         displayValue = "";
     }   
-      else if (display.textContent.length < 22) {
+      else if (!isFinite(keyPressed) ) {
     switch(keyPressed) {
-        case '0':
-        displayValue += keyPressed;    
-        display.textContent = displayValue;
-        break;
-        case '1':
-        displayValue += keyPressed;    
-        display.textContent = displayValue;
-        break;
-        case '2':
-        displayValue += keyPressed;    
-        display.textContent = displayValue;
-        break;
-        case '3':
-        displayValue += keyPressed;    
-        display.textContent = displayValue;
-        break;
-        case '4':
-        displayValue += keyPressed;    
-        display.textContent = displayValue;
-        break;
-        case '5':
-        displayValue += keyPressed;    
-        display.textContent = displayValue;
-        break;
-        case '6':
-        displayValue += keyPressed;    
-        display.textContent = displayValue;
-        break;
-        case '7':
-        displayValue += keyPressed;    
-        display.textContent = displayValue;
-        break;
-        case '8':
-        displayValue += keyPressed;    
-        display.textContent = displayValue;
-        break;
-        case '9':
-        displayValue += keyPressed;    
-        display.textContent = displayValue;
-        break;
         case '+':
         display.textContent = "";    
             if (storedValue && displayValue) {
@@ -136,6 +96,51 @@ document.addEventListener('keydown', function(e) {
                 display.textContent = displayValue;
                 }
         break;
+            }
+      }
+      else if (display.textContent.length < 22 && isFinite(keyPressed) ) {
+        switch(keyPressed) {
+        case '0':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '1':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '2':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '3':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '4':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '5':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '6':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '7':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '8':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        case '9':
+        displayValue += keyPressed;    
+        display.textContent = displayValue;
+        break;
+        
     }
     
 }});
